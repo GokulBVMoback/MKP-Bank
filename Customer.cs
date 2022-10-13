@@ -6,30 +6,43 @@ using System.Threading.Tasks;
 
 namespace MKPBank
 {
-    internal class Customer
+    public class Customer
     {
-        private static int MAXACCOUNTS = 5;
-        private List<Accounts> accounts;
-        private Guid customerId;
-        private string firstName;
-        private string lastName;
+        //Data fields
+        protected static int MAXACCOUNTS = 5;
+        protected List<Account> accounts;
+        protected Guid customerId;
+        protected string firstName;
+        protected string lastName;
+
+        //Constructor
+        public Customer(string firstName, string lastName)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            customerId = CustomerId;
+            accounts = new List<Account>(NumOfAccounts);
+        }
         
+        //Properties
         public Guid CustomerId
         {
             get { return customerId; }
-            set { customerId = value; }
+            protected set { customerId = new Guid(); }
         }
         public string FirstName
         {
             get { return firstName; }
-            set { firstName = value; }
+            protected set { firstName = value; }
         }
         public string LastName
         {
             get { return lastName; }
-            set {lastName = value;}
+            protected set {lastName = value;}
         }
         public int NumOfAccounts
-            { get { return accounts.Count; } }
+        {
+            get { return accounts.Count; } 
+        }
     }
 }

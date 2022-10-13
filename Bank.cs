@@ -6,17 +6,28 @@ using System.Threading.Tasks;
 
 namespace MKPBank
 {
-    internal class Bank
+    public class Bank
     {
-        private const int MAXCUSTOMERS = 500;
-        private List<Customer> customers;
-       public int NumOfCustomers
+        //Data fields
+        protected const int MAXCUSTOMERS = 500;
+        protected List<Customer> customers;
+
+        //Constructor
+        public Bank(string bankName)
         {
-            get { return customers.Count; }
+            BankName=bankName;
+            customers = new List<Customer>(NumOfCustomers);
         }
+
+        //Properties
         public string BankName
         {
-            set { value = "MKP Bank";  }
+            get { return BankName; }
+            private set { value = "MKP Bank"; }
+        }
+        public int NumOfCustomers
+        {
+            get { return customers.Count; }
         }
     }
 }

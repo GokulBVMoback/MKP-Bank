@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MKPBank
 {
-    internal interface ITransferable
+    public interface ITransferable
     {
+        void Transfer(Account toAccount, double amount);
     }
 }
