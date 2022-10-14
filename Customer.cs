@@ -21,7 +21,7 @@ namespace MKPBank
             this.firstName = firstName;
             this.lastName = lastName;
             customerId = CustomerId;
-            accounts = new List<Account>(NumOfAccounts);
+            accounts = new List<Account>(MAXACCOUNTS);
         }
         
         //Properties
@@ -43,6 +43,29 @@ namespace MKPBank
         public int NumOfAccounts
         {
             get { return accounts.Count; } 
+        }
+
+        //Methods
+        public void AddAccount(Account account)
+        {
+            if(NumOfAccounts<MAXACCOUNTS)
+            {
+                accounts.Add(account);
+            }
+            else
+            {
+                Console.WriteLine("You cannot add new account, because maximum number of accounts reached");
+            }
+        }
+
+        public List<Account> GetAccount()
+        {
+            return accounts;
+        }
+
+        public void GetFirstTransferable()
+        {
+            Console.WriteLine(accounts.FirstOrDefault(x => x.GetType() == typeof(SavingsAccount)));
         }
     }
 }
