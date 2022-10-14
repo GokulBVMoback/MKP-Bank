@@ -22,8 +22,8 @@ namespace MKPBank
         //Properties
         public string BankName
         {
-            get { return BankName; }
-            protected set { value = BankName; }
+            get;
+            protected set;
         }
         public int NumOfCustomers
         {
@@ -46,26 +46,15 @@ namespace MKPBank
 
         public void GenerateReport()
         {
-            ToString();
+            Console.WriteLine(ToString());
             foreach(Customer customer in customers)
             {
                 Console.WriteLine("Full Name:" + customer.FirstName + " " + customer.LastName);
-                Console.WriteLine("Customer Id:" + customer.CustomerId);
-                Console.WriteLine("Number of Accounts:" + customer.NumOfAccounts);
-                Console.WriteLine("Account Type:"+customer.GetType().Name);
-
-                //if (customer.GetType() == typeof(SavingsAccount))
-                //{
-                //    Console.WriteLine("\nAccount Type:Savings Account");
-                //}
-                //else if (customer.GetType() == typeof(CheckingAccount))
-                //{
-                //    Console.WriteLine("\nAccount Type:Checking Account");
-                //}
-                //else
-                //{
-                //    Console.WriteLine("\nAccount Type:Unknown Account");
-                //}   
+                foreach (Account account in customer.GetAccount())
+                {
+                    Console.WriteLine("Account Type:" + customer.GetType().Name);
+                    Console.WriteLine("Balance:"+account.Balance);
+                } 
             }
         }
 
@@ -76,7 +65,7 @@ namespace MKPBank
         public override string ToString()
         {
             BankName = "MKP Bank";
-            return BankName + NumOfCustomers;     
+            return BankName + NumOfCustomers.ToString();     
         }
     }
 }
