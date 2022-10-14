@@ -13,7 +13,7 @@ namespace MKPBank
         protected List<Customer> customers;
 
         //Constructor
-        public Bank(string bankName)
+        public Bank(string bankName="MKP Bank")
         {
             BankName=bankName;
             customers = new List<Customer>(NumOfCustomers);
@@ -23,7 +23,7 @@ namespace MKPBank
         public string BankName
         {
             get { return BankName; }
-            private set { value = "MKP Bank"; }
+            private set { value = BankName; }
         }
         public int NumOfCustomers
         {

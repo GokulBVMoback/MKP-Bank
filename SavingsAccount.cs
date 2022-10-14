@@ -28,6 +28,7 @@ namespace MKPBank
         }
 
         public void Transfer(Account toAccount, double amount)
+
         {
             Deposit(amount);
             Console.WriteLine("Rs."+ amount +" credited from"+ toAccount +" on "+ DateTime.Now +".\n Your current balance is "+Balance);
