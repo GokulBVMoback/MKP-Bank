@@ -48,13 +48,20 @@ namespace MKPBank
         //Methods
         public void AddAccount(Account account)
         {
-            if(NumOfAccounts<MAXACCOUNTS)
+            try 
             {
-                accounts.Add(account);
+                if (NumOfAccounts >= MAXACCOUNTS)
+                {
+                    throw new AccountLimitException("You cannot add new account, because maximum number of accounts reached", NumOfAccounts);
+                }
+                else
+                {
+                    accounts.Add(account);
+                }
             }
-            else
+            catch(AccountLimitException ex)
             {
-                Console.WriteLine("You cannot add new account, because maximum number of accounts reached");
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -63,9 +70,9 @@ namespace MKPBank
             return accounts;
         }
 
-        public void GetFirstTransferable()
+        public Account GetFirstTransferable()
         {
-            Console.WriteLine(accounts.FirstOrDefault(x => x.GetType() == typeof(SavingsAccount)));
+            return accounts.FirstOrDefault(x => x.GetType() == typeof(SavingsAccount));
         }
     }
 }

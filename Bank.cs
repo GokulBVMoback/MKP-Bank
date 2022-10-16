@@ -33,14 +33,21 @@ namespace MKPBank
         //Methods
         public void AddCustomer(string firstName, string lastName)
         {
-            if(NumOfCustomers>=MAXCUSTOMERS)
+            try
             {
-                Console.WriteLine("You cannot add new customer, because maximum number of customers reached.");
+                if (NumOfCustomers >= MAXCUSTOMERS)
+                {
+                    throw new AccountLimitException("You cannot add new customer, because maximum number of customers reached.", NumOfCustomers);
+                }
+                else
+                {
+                    Customer customer = new Customer(firstName, lastName);
+                    customers.Add(customer);
+                }
             }
-            else
+            catch (AccountLimitException ex)
             {
-                Customer customer = new Customer(firstName, lastName);
-                customers.Add(customer);
+                Console.WriteLine("Exception Caught: "+ex.Message);
             }
         }
 
@@ -52,7 +59,14 @@ namespace MKPBank
                 Console.WriteLine("Full Name:" + customer.FirstName + " " + customer.LastName);
                 foreach (Account account in customer.GetAccount())
                 {
-                    Console.WriteLine("Account Type:" + customer.GetType().Name);
+                    if (customer.GetType() == typeof(SavingsAccount) || customer.GetType()==typeof(CheckingAccount))
+                    {
+                        Console.WriteLine("Account Type:" + customer.GetType().Name);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Account Type:Unknown Account");
+                    }
                     Console.WriteLine("Balance:"+account.Balance);
                 } 
             }
@@ -65,7 +79,7 @@ namespace MKPBank
         public override string ToString()
         {
             BankName = "MKP Bank";
-            return BankName + NumOfCustomers.ToString();     
+            return "Bank Name: "+BankName+" Number of customers: "+ NumOfCustomers;     
         }
     }
 }

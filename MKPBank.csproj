@@ -44,10 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="AccountLimitException.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="CheckingAccount.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="CustomerLimitException.cs" />
     <Compile Include="ITransferable.cs" />
+    <Compile Include="OverdraftException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SavingsAccount.cs" />
