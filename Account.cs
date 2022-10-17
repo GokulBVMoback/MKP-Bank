@@ -39,20 +39,13 @@ namespace MKPBank
 
         public virtual void Withdraw(double witAmt)
         {
-            try
+            if (witAmt > Balance)
             {
-                if (witAmt > Balance)
-                {
-                    throw new OverdraftException("You cannot withdraw " + witAmt + " amount, due to insufficient balance.", Balance);
-                }
-                else
-                {
-                    Balance = Balance - witAmt;
-                }
+                throw new OverdraftException("You cannot withdraw " + witAmt + " amount, due to insufficient balance.", Balance);
             }
-            catch(OverdraftException ex)
+            else
             {
-                Console.WriteLine("Exception Caught: "+ex.Message);
+                Balance = Balance - witAmt;
             }
 
         }

@@ -33,8 +33,6 @@ namespace MKPBank
         //Methods
         public void AddCustomer(string firstName, string lastName)
         {
-            try
-            {
                 if (NumOfCustomers >= MAXCUSTOMERS)
                 {
                     throw new AccountLimitException("You cannot add new customer, because maximum number of customers reached.", NumOfCustomers);
@@ -44,11 +42,6 @@ namespace MKPBank
                     Customer customer = new Customer(firstName, lastName);
                     customers.Add(customer);
                 }
-            }
-            catch (AccountLimitException ex)
-            {
-                Console.WriteLine("Exception Caught: "+ex.Message);
-            }
         }
 
         public void GenerateReport()

@@ -48,8 +48,6 @@ namespace MKPBank
         //Methods
         public void AddAccount(Account account)
         {
-            try 
-            {
                 if (NumOfAccounts >= MAXACCOUNTS)
                 {
                     throw new AccountLimitException("You cannot add new account, because maximum number of accounts reached", NumOfAccounts);
@@ -58,11 +56,6 @@ namespace MKPBank
                 {
                     accounts.Add(account);
                 }
-            }
-            catch(AccountLimitException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
         }
 
         public List<Account> GetAccount()
