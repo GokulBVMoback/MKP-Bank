@@ -52,9 +52,9 @@ namespace MKPBank
                 Console.WriteLine("Full Name:" + customer.FirstName + " " + customer.LastName);
                 foreach (Account account in customer.GetAccount())
                 {
-                    if (customer.GetType() == typeof(SavingsAccount) || customer.GetType()==typeof(CheckingAccount))
+                    if (account.GetType() == typeof(SavingsAccount) || account.GetType()==typeof(CheckingAccount))
                     {
-                        Console.WriteLine("Account Type:" + customer.GetType().Name);
+                        Console.WriteLine("Account Type:" + account.GetType().Name);
                     }
                     else
                     {
