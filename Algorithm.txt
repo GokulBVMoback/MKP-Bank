@@ -1,0 +1,6 @@
+/*****************************Algorithm**************************************/
+
+//Create instance for Bank class.
+//By using AddCustomer function We can add customer.
+//Create instance for Savings Account and Checking Account.
+//By using GetCustomer function we get the customer and by using AddAccount fucnction.

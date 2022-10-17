@@ -72,7 +72,7 @@ namespace MKPBank
         }
         public override string ToString()
         {
-            return "Bank Name: "+BankName+" Number of customers: "+ NumOfCustomers;     
+            return "Welcome to "+BankName+". Number of customers: "+ NumOfCustomers;     
         }
     }
 }

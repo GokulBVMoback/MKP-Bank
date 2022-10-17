@@ -21,7 +21,7 @@ namespace MKPBank
                     
                     bank.AddCustomer("Gokul", "B V");
                     bank.AddCustomer("Renish", "Britto");
-                    bank.ToString();
+                    //bank.ToString();
                     
                 }
                 catch(CustomerLimitException e)
@@ -51,7 +51,7 @@ namespace MKPBank
                     Console.WriteLine("\nChecking Overdraft");
                    
                     account.Withdraw(20);
-                    account.Deposit(20);
+                    account.Deposit(25);
                     account.Withdraw(2000);
                 }
                 catch(OverdraftException e)
@@ -62,6 +62,47 @@ namespace MKPBank
                 {
                     Console.WriteLine("First Name:"+customer.FirstName+" Last Name:"+customer.LastName);
                     account.Display();
+                }
+
+                customer = bank.GetCustomer("Renish", "Britto");
+                account = (bank.GetCustomer("Renish", "Britto").GetAccount().Where(x => x.GetType() == typeof(CheckingAccount)).FirstOrDefault());
+                try
+                {
+                    Console.WriteLine("\nChecking Overdraft");
+
+                    account.Withdraw(20);
+                    account.Deposit(25);
+                    account.Withdraw(2000);
+                }
+                catch (OverdraftException e)
+                {
+                    Console.WriteLine("Exception Caught: " + e.Message, e.DeficitAmount);
+                }
+                finally
+                {
+                    Console.WriteLine("First Name:" + customer.FirstName + " Last Name:" + customer.LastName);
+                    account.Display();
+                }
+                customer = bank.GetCustomer("Gokul", "B V");
+                account = customer.GetFirstTransferable();
+                SavingsAccount savingsAccount = (SavingsAccount)account;
+                try
+                {
+                    Console.WriteLine("\n Checking Transfer");  
+                    account = (bank.GetCustomer("Renish", "Britto").GetAccount().FirstOrDefault());
+                    savingsAccount.Transfer(account, 500);
+                    savingsAccount.Transfer(account, 3000);
+                }
+                catch(OverdraftException e) 
+                {
+                    Console.WriteLine("Exception Caught: " + e.Message, e.DeficitAmount);
+                }
+                finally
+                {
+                    Console.WriteLine("First Name:" + customer.FirstName + " Last Name:" + customer.LastName);
+                    savingsAccount.Display();
+                    Console.WriteLine("\n Updated Report");
+                    bank.GenerateReport();
                 }
             }
             catch(Exception ex)

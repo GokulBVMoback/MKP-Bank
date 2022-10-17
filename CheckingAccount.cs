@@ -22,7 +22,7 @@ namespace MKPBank
         public CheckingAccount(double intBal)
             :this(intBal,0)
         {
-
+            Balance = intBal;
         }
 
         //Methods
