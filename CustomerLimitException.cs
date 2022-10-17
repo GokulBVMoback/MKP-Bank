@@ -22,6 +22,7 @@ namespace MKPBank
         public int NumOfCustomers
         {
             get { return numOfCustomers; }
+            set { numOfCustomers = value; }
         }
     }
 }

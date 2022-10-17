@@ -22,6 +22,7 @@ namespace MKPBank
         public double DeficitAmount
         {
              get{ return deficitAmount; }
+            set{ deficitAmount = value; }   
         }
     }
 }

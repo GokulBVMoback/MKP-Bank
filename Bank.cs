@@ -52,6 +52,7 @@ namespace MKPBank
                 Console.WriteLine("Full Name:" + customer.FirstName + " " + customer.LastName);
                 foreach (Account account in customer.GetAccount())
                 {
+
                     if (account.GetType() == typeof(SavingsAccount) || account.GetType()==typeof(CheckingAccount))
                     {
                         Console.WriteLine("Account Type:" + account.GetType().Name);
@@ -67,11 +68,10 @@ namespace MKPBank
 
         public Customer GetCustomer(string firstName, string lastName)
         {
-            return customers.FirstOrDefault(x => x.FirstName == firstName && x.LastName == lastName);
+            return customers.Where(x => x.FirstName == firstName && x.LastName == lastName).FirstOrDefault();
         }
         public override string ToString()
         {
-            BankName = "MKP Bank";
             return "Bank Name: "+BankName+" Number of customers: "+ NumOfCustomers;     
         }
     }
