@@ -65,7 +65,14 @@ namespace MKPBank
 
         public Account GetFirstTransferable()
         {
-            return accounts.FirstOrDefault(x => x.GetType() == typeof(SavingsAccount));
+         foreach(Account account in GetAccount())
+            {
+                if(account is ITransferable)
+                {
+                    return account;
+                }
+            }
+            return null;
         }
     }
 }

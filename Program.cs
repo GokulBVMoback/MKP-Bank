@@ -84,14 +84,12 @@ namespace MKPBank
                     account.Display();
                 }
                 customer = bank.GetCustomer("Gokul", "B V");
-                account = customer.GetFirstTransferable();
-                SavingsAccount savingsAccount = (SavingsAccount)account;
+                ITransferable transferable = (ITransferable)customer.GetFirstTransferable();
                 try
                 {
                     Console.WriteLine("\n Checking Transfer");  
-                    account = (bank.GetCustomer("Renish", "Britto").GetAccount().FirstOrDefault());
-                    savingsAccount.Transfer(account, 500);
-                    savingsAccount.Transfer(account, 3000);
+                    transferable.Transfer(account, 500);
+                    transferable.Transfer(account, 3000);
                 }
                 catch(OverdraftException e) 
                 {
@@ -100,7 +98,7 @@ namespace MKPBank
                 finally
                 {
                     Console.WriteLine("First Name:" + customer.FirstName + " Last Name:" + customer.LastName);
-                    savingsAccount.Display();
+                    account.Display();
                     Console.WriteLine("\n Updated Report");
                     bank.GenerateReport();
                 }
