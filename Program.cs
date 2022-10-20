@@ -45,7 +45,7 @@ namespace MKPBank
 
 
                 customer = bank.GetCustomer("Gokul", "B V");
-                account = (bank.GetCustomer("Gokul", "B V").GetAccount().Where(x => x.GetType() == typeof(CheckingAccount)).FirstOrDefault());
+                account = (customer.GetAccount().Where(x => x.GetType() == typeof(CheckingAccount)).FirstOrDefault());
                 try
                 {
                     Console.WriteLine("\nChecking Overdraft");
@@ -65,7 +65,7 @@ namespace MKPBank
                 }
 
                 customer = bank.GetCustomer("Renish", "Britto");
-                account = (bank.GetCustomer("Renish", "Britto").GetAccount().Where(x => x.GetType() == typeof(CheckingAccount)).FirstOrDefault());
+                account = (customer.GetAccount().Where(x => x.GetType() == typeof(CheckingAccount)).FirstOrDefault());
                 try
                 {
                     Console.WriteLine("\nChecking Overdraft");
