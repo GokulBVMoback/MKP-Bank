@@ -1,0 +1,46 @@
+Bank class:
+
+AddCustomer() method:
+*By using if condition    - check NumOfCustomers less than MAXCUSTOMERS
+*if NumOfCustomers less than MAXCUSTOMERS
+*then add customers to the list
+
+//if condition to check num1 >num2
+//	if true print num1
+//else
+//	print num2
+
+GenerateReport() method:
+*Display Bank Name and Num of customers by call ToString() method
+*By using foreach loop - display customers(list).
+*Inside the foreach loop by using if statement check the account type by using GetType() builtin function
+*if customers object type is SavingsAccount
+*then print Savings Account
+*else if customers object type is CheckingAccount
+*then print Savings Account
+*else print Unknown type
+*display the balance inside the foreach loop
+
+
+GetCustomer(string firstName, string lastName) method:
+*By using lamda expression find all the customers FirstName and LastName which are matched with the firstName and lastName in the parameter
+*display that customers
+
+ToString(): method
+*Give the name to the BankName
+*And return BankName and Num of Accounts
+
+Customer class:
+
+AddAccount() method:
+*By using if condition    - check NumOfAccounts less than MAXACCOUNTS
+*if NumOfAccounts less than MAXACCOUNTS
+*then add accounts to the list
+
+GetAccount() method:
+*By using foreach loop - display accounts(list)
+
+GetFirstTransferable() method:
+*By using lamda expression check the accounts type by using GetType() builtin function get the type of accounts
+*And check GetType==typeOf(SavingsAccount)
+*By using the firstordefault keyword print the first SavingsAccount of the accounts list.
